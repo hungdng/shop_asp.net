@@ -1,0 +1,104 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <style>
+        .inline {
+            float: left;
+        }
+
+        .clearBoth {
+            clear: both;
+        }
+
+        .container {
+            padding: 1rem;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .logo {
+            width: 200px
+        }
+
+        .w-30 {
+            width: 30%;
+        }
+
+        .avatar {
+            height: 50px
+        }
+
+        section {
+            display: flex;
+        }
+
+        aside {
+            flex: 30%;
+            background-color: #e0e0e0;
+            padding: 1rem;
+        }
+
+        article {
+            flex: 70%;
+            background-color: #f8f8f8;
+            padding: 1rem;
+        }
+    </style>
+    <form id="form1" runat="server">
+        <div class="container">
+            <div class="left">
+                <img class="logo" src="HinhAnh/logo_logo_logo.philong.png" />
+            </div>
+            <div class="right w-30">
+                <asp:Panel ID="pnlLogin" runat="server">
+                    <asp:TextBox runat="server" ID="txtUser" placeholder="Tài Khoản"></asp:TextBox>
+                    <asp:TextBox runat="server" ID="txtPassword" placeholder="Mật khẩu"></asp:TextBox>
+                    <asp:CheckBox ID="CheckBox1" runat="server" Text=" " />
+                    <asp:Button runat="server" ID="btnLogin" Text="Đăng Nhập" OnClick="btnLogin_Click" />
+                </asp:Panel>
+
+                <asp:Panel ID="Panel2" runat="server" Visible="false">
+                    <asp:Image ID="imgAvatar" runat="server" class="avatar" />
+                    <asp:Label runat="server" ID="lblname" Text="Label"></asp:Label>
+                    <asp:Button runat="server" ID="btnLogout" Text="Đăng Xuất" OnClick="btnLogout_Click" />
+                    <a href="XemPhanHoi.aspx">Xem phản hồi</a>
+                </asp:Panel>
+            </div>
+        </div>
+        <div class="clearBoth"></div>
+        <section>
+            <aside>
+                <h3>Loại Hàng:</h3>
+                <div class="clearBoth"></div>
+                <asp:GridView runat="server" ID="grvLoaiHang" AutoGenerateColumns="False" EnableModelValidation="True"  CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <Columns>
+                        <asp:HyperLinkField DataTextField="TEN_LOAI_HANG" DataNavigateUrlFields="MA_LOAI_HANG" DataNavigateUrlFormatString="./HangDataList.aspx?id={0}" DataTextFormatString="{0}" />
+                        <asp:ImageField DataImageUrlField="HINH_ANH" DataImageUrlFormatString="./HinhAnh/LoaiHang/{0}">
+                            <ControlStyle Height="40px" Width="40px" />
+                        </asp:ImageField>
+                    </Columns>
+                </asp:GridView>
+            </aside>
+
+            <article>
+                <asp:ContentPlaceHolder ID="ContentMain" runat="server">
+                </asp:ContentPlaceHolder>
+            </article>
+        </section>
+    </form>
+</body>
+</html>

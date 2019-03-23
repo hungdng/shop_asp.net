@@ -1,0 +1,9 @@
+﻿CREATE TABLE [dbo].[NGUOI_DUNG] (
+    [ID]            INT            NOT NULL,
+    [TEN_DANG_NHAP] VARCHAR (20)   NOT NULL,
+    [MAT_KHAU]      VARCHAR (20)   NOT NULL,
+    [HINH_ANH]      VARCHAR (120)  NOT NULL,
+    [HO_TEN]        NVARCHAR (120) NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
